@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class ErrorState extends StatelessWidget {
   final String message;
-  final VoidCallback onPress;
+  final VoidCallback onRetryPress;
 
-  ErrorState({required this.message, required this.onPress});
+  ErrorState({required this.message, required this.onRetryPress});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class ErrorState extends StatelessWidget {
           Text('Error: $message'),
           SizedBox(height: 20,),
           ElevatedButton(
-            onPressed: onPress,
+            onPressed: onRetryPress,
             child: Text('Retry'),
           )
         ],

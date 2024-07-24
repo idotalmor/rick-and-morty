@@ -17,7 +17,7 @@ class CharacterListScreen extends ConsumerWidget {
       appBar: AppBar(title: Text('Characters')),
       body: characterState.when(
         loading: () => LoadingState(),
-        error: (message) => ErrorState(message: message, onPress:ref.read(characterNotifierProvider.notifier).loadCharacters ,),
+        error: (message) => ErrorState(message: message, onRetryPress:ref.read(characterNotifierProvider.notifier).loadCharacters ,),
         data: (characters, page, isLoadingMore, loadMoreError) {
           return NotificationListener<ScrollNotification>(
             onNotification: (scrollNotification) {
