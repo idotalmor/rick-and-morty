@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:indieflow/core/index.dart' show Character;
+import 'package:indieflow/features/common/index.dart' show CustomImage;
 
 class CharacterViewScreen extends StatelessWidget {
   final Character character;
@@ -17,7 +18,7 @@ class CharacterViewScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.network(character.image),
+            CustomImage(url:character.image),
             const SizedBox(height: 16),
             Text('Name: ${character.name}', style: const TextStyle(fontSize: 18)),
             Text('Status: ${character.status}', style: const TextStyle(fontSize: 18)),

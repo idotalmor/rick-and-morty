@@ -6,5 +6,5 @@ import 'dio_client/dio_client.dart';
 final getIt = GetIt.instance;
 
 void setupLocator() {
-  getIt.registerSingleton<Dio>(setupDio());
+  getIt.registerSingletonAsync<Dio>(()=>setupDio());
 }
