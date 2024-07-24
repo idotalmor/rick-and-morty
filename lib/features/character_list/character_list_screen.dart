@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:indieflow/core/rickandmorty/provider/character_provider.dart';
-import 'package:indieflow/core/rickandmorty/provider/character_ps.dart';
+
+import 'package:indieflow/core/rickandmorty/index.dart' show characterNotifierProvider, CharacterPS;
 
 
 class CharacterListScreen extends ConsumerWidget {
