@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:indieflow/core/character/api/character_api.dart';
+
+import 'package:indieflow/core/index.dart' show CharacterApi;
 import 'models/character_ps.dart';
 
 final characterNotifierProvider = StateNotifierProvider<CharacterNotifier, CharacterPS>((ref) {

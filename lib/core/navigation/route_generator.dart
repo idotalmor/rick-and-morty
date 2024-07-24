@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:indieflow/core/index.dart' show Character;
 import 'routes.dart';
+import 'package:indieflow/core/index.dart' show Character;
 import 'package:indieflow/features/index.dart' show CharacterListScreen, CharacterViewScreen;
 
 Route<dynamic>? generateRoute(RouteSettings settings) {

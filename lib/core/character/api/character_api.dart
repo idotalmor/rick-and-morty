@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import '../constants.dart' show characterEndpoint, fetchCharactersError;
 import '../models/character.dart';
 
-import 'package:indieflow/core/index.dart' show characterEndpoint, fetchCharactersError;
 import 'package:indieflow/core/index.dart' show ApiResponse;
 
 

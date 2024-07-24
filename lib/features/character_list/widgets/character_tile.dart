@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:indieflow/core/index.dart';
+
+import 'package:indieflow/core/index.dart' show Character;
 
 class CharacterTile extends StatelessWidget {
   final Character model;
