@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:indieflow/core/index.dart' show Character;
 import 'package:indieflow/features/common/index.dart' show CustomImage;
 
+import 'package:indieflow/core/test_ids.dart';
+
 class CharacterViewScreen extends StatelessWidget {
   final Character character;
 
@@ -11,6 +13,8 @@ class CharacterViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ValueKey(TestIds.characterView.screen),
+
       appBar: AppBar(title: Text(character.name),),
       body: Container(
         width: double.infinity,

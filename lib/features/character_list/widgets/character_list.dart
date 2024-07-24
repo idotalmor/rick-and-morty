@@ -11,6 +11,7 @@ class CharacterList extends StatelessWidget {
   final void Function(Character) onCharacterTap;
 
   const CharacterList({
+    super.key,
     required this.characters,
     required this.isLoadingMore,
     required this.loadMoreError,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:indieflow/core/test_ids.dart';
 
 import 'package:get_it/get_it.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderScope;
@@ -13,27 +14,37 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() {
-    setupLocator(); // Setup GetIt
+    setupLocator();
   });
 
   tearDownAll(() {
-    GetIt.I.reset(); // Cleanup GetIt after all tests
+    GetIt.I.reset();
   });
 
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('skeleton test', (WidgetTester tester) async {
+
     await tester.pumpWidget(const ProviderScope(child:MyApp()));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.byKey(ValueKey(TestIds.characterList.screen)), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    expect(find.byKey(ValueKey(TestIds.characterList.loadingState)), findsOneWidget);
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.byKey(ValueKey(TestIds.characterList.list)), findsOneWidget);
+
+    const rick = 'Rick Sanchez';
+    expect(find.text(rick), findsOneWidget);
+    await tester.tap(find.text(rick));
+
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(ValueKey(TestIds.characterList.screen)), findsNothing);
+
+    expect(find.byKey(ValueKey(TestIds.characterView.screen)), findsOneWidget);
+
+    expect(find.text(rick), findsOneWidget);
+
   });
 }
+
+//flutter test integration_test/app_test.dart

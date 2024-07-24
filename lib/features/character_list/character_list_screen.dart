@@ -8,6 +8,8 @@ import 'package:indieflow/core/index.dart'
 import 'provider/index.dart' show CharacterPS, characterNotifierProvider;
 import 'widgets/index.dart' show CharacterList, ErrorState, LoadingState;
 
+import 'package:indieflow/core/test_ids.dart';
+
 class CharacterListScreen extends ConsumerWidget {
   const CharacterListScreen({super.key});
 
@@ -24,14 +26,20 @@ class CharacterListScreen extends ConsumerWidget {
     CharacterPS characterState = ref.watch(characterNotifierProvider);
 
     return Scaffold(
+      key: ValueKey(TestIds.characterList.screen),
       appBar: AppBar(title: Text('Characters')),
       body: characterState.when(
-        loading: () => LoadingState(),
-        error: (message) => ErrorState(
-          message: message,
-          onRetryPress:
-              ref.read(characterNotifierProvider.notifier).loadCharacters,
-        ),
+        loading: () =>
+            LoadingState(key: ValueKey(TestIds.characterList.loadingState),),
+        error: (message) =>
+            ErrorState(
+              key: ValueKey(TestIds.characterList.errorState),
+              message: message,
+              onRetryPress:
+              ref
+                  .read(characterNotifierProvider.notifier)
+                  .loadCharacters,
+            ),
         data: (characters, page, isLoadingMore, loadMoreError) {
           return NotificationListener<ScrollNotification>(
             onNotification: (scrollNotification) {
@@ -44,6 +52,7 @@ class CharacterListScreen extends ConsumerWidget {
               return false;
             },
             child: CharacterList(
+              key: ValueKey(TestIds.characterList.list),
               characters: characters,
               isLoadingMore: isLoadingMore,
               loadMoreError: loadMoreError,

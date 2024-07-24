@@ -4,7 +4,7 @@ class ErrorState extends StatelessWidget {
   final String message;
   final VoidCallback onRetryPress;
 
-  ErrorState({required this.message, required this.onRetryPress});
+  const ErrorState({super.key, required this.message, required this.onRetryPress});
 
   @override
   Widget build(BuildContext context) {
