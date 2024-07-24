@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:indieflow/core/rickandmorty/models/index.dart' show Character;
+import 'package:indieflow/core/index.dart' show Character;
 import 'package:indieflow/features/character_list/widgets/character_tile.dart';
 
 class CharacterList extends StatelessWidget {

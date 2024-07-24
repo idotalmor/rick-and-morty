@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:indieflow/core/rickandmorty/index.dart' show characterNotifierProvider, CharacterPS, Character;
-import 'package:indieflow/features/character_view/index.dart' show CharacterViewScreen;
+import 'package:indieflow/core/index.dart' show  Character;
 
+import 'provider/index.dart' show CharacterPS, characterNotifierProvider;
 import 'widgets/index.dart' show CharacterList, ErrorState, LoadingState;
 
 class CharacterListScreen extends ConsumerWidget {

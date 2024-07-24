@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:indieflow/core/rickandmorty/models/index.dart';
+import 'package:indieflow/core/index.dart' show Character;
 
 part 'character_ps.freezed.dart';
 

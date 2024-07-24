@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import 'package:indieflow/core/constants.dart' show characterEndpoint, fetchCharactersError;
-import 'package:indieflow/core/rickandmorty/models/index.dart' show ApiResponse, Character;
+import '../models/character.dart';
+
+import 'package:indieflow/core/index.dart' show characterEndpoint, fetchCharactersError;
+import 'package:indieflow/core/index.dart' show ApiResponse;
+
 
 class CharacterApi {
   final Dio _dio = GetIt.instance<Dio>();

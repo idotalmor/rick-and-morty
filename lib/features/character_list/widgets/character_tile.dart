@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:indieflow/core/rickandmorty/models/index.dart';
+import 'package:indieflow/core/index.dart';
 
 class CharacterTile extends StatelessWidget {
   final Character model;

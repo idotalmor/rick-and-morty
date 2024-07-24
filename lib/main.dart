@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/index.dart' show Character, setupLocator;
-import 'features/character_list/index.dart' show CharacterListScreen;
-import 'features/character_view/character_view_screen.dart';
+import 'features/index.dart' show CharacterListScreen, CharacterViewScreen;
 
 void main() {
   setupLocator();

@@ -1,2 +1,2 @@
-export 'character_ps.dart';
+export 'models/index.dart';
 export 'character_provider.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:indieflow/core/rickandmorty/api/character_api.dart';
-import 'character_ps.dart';
+import 'package:indieflow/core/character/api/character_api.dart';
+import 'models/character_ps.dart';
 
 final characterNotifierProvider = StateNotifierProvider<CharacterNotifier, CharacterPS>((ref) {
   return CharacterNotifier(CharacterApi());

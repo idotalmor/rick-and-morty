@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:indieflow/core/rickandmorty/models/index.dart' show Character;
+import 'package:indieflow/core/index.dart' show Character;
 
 class CharacterViewScreen extends StatelessWidget {
   final Character character;
