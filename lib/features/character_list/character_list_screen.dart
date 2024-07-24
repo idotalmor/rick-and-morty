@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:indieflow/core/rickandmorty/index.dart' show characterNotifierProvider, CharacterPS;
 
+import 'widgets/index.dart' show CharacterList, ErrorState, LoadingState;
 
 class CharacterListScreen extends ConsumerWidget {
   const CharacterListScreen({super.key});
@@ -13,10 +14,10 @@ class CharacterListScreen extends ConsumerWidget {
     CharacterPS characterState = ref.watch(characterNotifierProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Characters'),),
+      appBar: AppBar(title: Text('Characters')),
       body: characterState.when(
-        loading: () => Center(child: CircularProgressIndicator()),
-        error: (message) => Center(child: Text('Error: $message')),
+        loading: () => LoadingState(),
+        error: (message) => ErrorState(message: message),
         data: (characters, page, isLoadingMore, loadMoreError) {
           return NotificationListener<ScrollNotification>(
             onNotification: (scrollNotification) {
@@ -27,26 +28,14 @@ class CharacterListScreen extends ConsumerWidget {
               }
               return false;
             },
-            child: ListView.builder(
-              itemCount: characters.length + (isLoadingMore || loadMoreError != null ? 1 : 0),
-              itemBuilder: (context, index) {
-                if (index == characters.length) {
-                  if (isLoadingMore) {
-                    return Center(child: CircularProgressIndicator());
-                  } else if (loadMoreError != null) {
-                    return Center(child: Text('Error loading more: $loadMoreError'));
-                  }
-                }
-                final character = characters[index];
-                return ListTile(
-                  leading: Image.network(character.image),
-                  title: Text(character.name),
-                  subtitle: Text(character.status),
-                );
-              },
+            child: CharacterList(
+              characters: characters,
+              isLoadingMore: isLoadingMore,
+              loadMoreError: loadMoreError,
             ),
           );
-        }, initial: () {},
+        },
+        initial: () => SizedBox(),
       ),
     );
   }
