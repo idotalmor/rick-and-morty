@@ -17,7 +17,8 @@ class CharacterList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: characters.length + (isLoadingMore || loadMoreError != null ? 1 : 0),
+      itemCount:
+          characters.length + (isLoadingMore || loadMoreError != null ? 1 : 0),
       itemBuilder: (context, index) {
         if (index == characters.length) {
           if (isLoadingMore) {
@@ -27,7 +28,7 @@ class CharacterList extends StatelessWidget {
           }
         }
         final character = characters[index];
-        return CharacterTile(model: character);
+        return CharacterTile(key: ValueKey(character.id), model: character);
       },
     );
   }
