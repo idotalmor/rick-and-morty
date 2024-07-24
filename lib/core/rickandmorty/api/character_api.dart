@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import 'package:indieflow/core/constants.dart' show characterEndpoint;
 import 'package:indieflow/core/rickandmorty/models/index.dart' show ApiResponse, Character;
 
 class CharacterApi {
@@ -8,7 +9,7 @@ class CharacterApi {
 
   Future<ApiResponse<Character>> fetchCharacters(int page) async {
     try {
-      final response = await _dio.get('/character', queryParameters: {'page': page},);
+      final response = await _dio.get(characterEndpoint, queryParameters: {'page': page},);
       return ApiResponse<Character>.fromJson(
         response.data,
             (json) => Character.fromJson(json as Map<String, dynamic>),

@@ -1,10 +1,11 @@
 
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
+import 'package:indieflow/core/constants.dart' show baseUrl;
 
 Dio setupDio() {
   final dio = Dio(BaseOptions(
-    baseUrl: 'https://rickandmortyapi.com/api',
+    baseUrl: baseUrl,
   ));
 
   final cacheInterceptor = DioCacheInterceptor(
