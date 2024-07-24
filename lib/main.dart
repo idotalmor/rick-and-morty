@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/index.dart' show setupLocator;
-import 'features/character_list/character_list_screen.dart';
+import 'features/character_list/index.dart' show CharacterListScreen;
 
 void main() {
   setupLocator();
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: CharacterListScreen(),
+      home: const CharacterListScreen(),
     );
   }
 }

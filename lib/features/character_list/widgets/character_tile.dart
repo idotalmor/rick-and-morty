@@ -11,7 +11,7 @@ class CharacterTile extends StatelessWidget {
     return ListTile(
       leading: Image.network(model.image),
       title: Text(model.name),
-      subtitle: Text(model.status),
+      subtitle: Text(model.species),
     );
   }
 }
