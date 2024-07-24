@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:indieflow/core/index.dart' show  Character;
+import 'package:indieflow/core/index.dart'
+    show AppRoutes, AppRoutesExtension, Character;
 
 import 'provider/index.dart' show CharacterPS, characterNotifierProvider;
 import 'widgets/index.dart' show CharacterList, ErrorState, LoadingState;
@@ -13,7 +14,7 @@ class CharacterListScreen extends ConsumerWidget {
   void _onCharacterTap(BuildContext context, Character character) {
     Navigator.pushNamed(
       context,
-      '/character',
+      AppRoutes.character.route,
       arguments: character,
     );
   }
@@ -26,12 +27,17 @@ class CharacterListScreen extends ConsumerWidget {
       appBar: AppBar(title: Text('Characters')),
       body: characterState.when(
         loading: () => LoadingState(),
-        error: (message) => ErrorState(message: message, onRetryPress:ref.read(characterNotifierProvider.notifier).loadCharacters ,),
+        error: (message) => ErrorState(
+          message: message,
+          onRetryPress:
+              ref.read(characterNotifierProvider.notifier).loadCharacters,
+        ),
         data: (characters, page, isLoadingMore, loadMoreError) {
           return NotificationListener<ScrollNotification>(
             onNotification: (scrollNotification) {
               if (scrollNotification is ScrollEndNotification &&
-                  scrollNotification.metrics.pixels == scrollNotification.metrics.maxScrollExtent) {
+                  scrollNotification.metrics.pixels ==
+                      scrollNotification.metrics.maxScrollExtent) {
                 ref.read(characterNotifierProvider.notifier).loadNextPage();
                 return true;
               }
@@ -41,7 +47,8 @@ class CharacterListScreen extends ConsumerWidget {
               characters: characters,
               isLoadingMore: isLoadingMore,
               loadMoreError: loadMoreError,
-              onCharacterTap: (character) => _onCharacterTap(context, character),
+              onCharacterTap: (character) =>
+                  _onCharacterTap(context, character),
             ),
           );
         },
