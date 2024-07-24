@@ -7,11 +7,13 @@ class CharacterList extends StatelessWidget {
   final List<Character> characters;
   final bool isLoadingMore;
   final String? loadMoreError;
+  final void Function(Character) onCharacterTap;
 
-  CharacterList({
+  const CharacterList({
     required this.characters,
     required this.isLoadingMore,
     required this.loadMoreError,
+    required this.onCharacterTap,
   });
 
   @override
@@ -28,7 +30,11 @@ class CharacterList extends StatelessWidget {
           }
         }
         final character = characters[index];
-        return CharacterTile(key: ValueKey(character.id), model: character);
+        return CharacterTile(
+          key: ValueKey(character.id),
+          model: character,
+          onCharacterTap: onCharacterTap,
+        );
       },
     );
   }

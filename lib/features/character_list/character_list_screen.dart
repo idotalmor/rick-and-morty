@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:indieflow/core/rickandmorty/index.dart' show characterNotifierProvider, CharacterPS;
+import 'package:indieflow/core/rickandmorty/index.dart' show characterNotifierProvider, CharacterPS, Character;
+import 'package:indieflow/features/character_view/index.dart' show CharacterViewScreen;
 
 import 'widgets/index.dart' show CharacterList, ErrorState, LoadingState;
 
 class CharacterListScreen extends ConsumerWidget {
   const CharacterListScreen({super.key});
+
+  void _onCharacterTap(BuildContext context, Character character) {
+    Navigator.pushNamed(
+      context,
+      '/character',
+      arguments: character,
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,6 +41,7 @@ class CharacterListScreen extends ConsumerWidget {
               characters: characters,
               isLoadingMore: isLoadingMore,
               loadMoreError: loadMoreError,
+              onCharacterTap: (character) => _onCharacterTap(context, character),
             ),
           );
         },

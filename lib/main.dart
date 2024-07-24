@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'core/index.dart' show setupLocator;
+import 'core/index.dart' show Character, setupLocator;
 import 'features/character_list/index.dart' show CharacterListScreen;
+import 'features/character_view/character_view_screen.dart';
 
 void main() {
   setupLocator();
@@ -21,7 +22,21 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const CharacterListScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const CharacterListScreen(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/character') {
+          final character = settings.arguments as Character;
+          return MaterialPageRoute(
+            builder: (context) {
+              return CharacterViewScreen(character: character);
+            },
+          );
+        }
+        return null;
+      },
     );
   }
 }

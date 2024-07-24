@@ -3,8 +3,9 @@ import 'package:indieflow/core/rickandmorty/models/index.dart';
 
 class CharacterTile extends StatelessWidget {
   final Character model;
+  final void Function(Character) onCharacterTap;
 
-  const CharacterTile({super.key, required this.model});
+  const CharacterTile({super.key, required this.model, required this.onCharacterTap});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +13,7 @@ class CharacterTile extends StatelessWidget {
       leading: Image.network(model.image),
       title: Text(model.name),
       subtitle: Text(model.species),
+      onTap: () => onCharacterTap(model),
     );
   }
 }
